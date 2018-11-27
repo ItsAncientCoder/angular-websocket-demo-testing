@@ -30,8 +30,6 @@ export class CreateMessage {
     }
 
     sendMsg() {
-        // console.log('new message from client: ', this.message);
-        this.chatService.messages.next(this.graphqlMsg);
-        this.message.message = '';
+        this.chatService.stockQuote.next(this.graphqlMsg);
     }
 }

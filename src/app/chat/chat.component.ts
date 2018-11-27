@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from '../shared/services/chat.service';
+import { ChatService, StockQuote } from '../shared/services/chat.service';
 
 @Component({
     selector: 'chat-component',
-    template: `
-		<div class="messages">
-			<h2>Recieved messages:</h2>
-			<p *ngFor="let msg of messages">
-				<strong>({{msg.author}})</strong> 
-				{{msg.message}} ({{msg.newDate}})</p>
-		</div>
-	`
+    templateUrl: './chat-app.html'
 })
 export class ChatComponent implements OnInit {
     messages: any[] = [];
 
+    stockQuote: StockQuote = {
+        dateTime: '',
+        stockCode: '',
+        stockPrice: 0,
+        stockPriceChange: 0
+    }
 
     constructor(private chatService: ChatService) {
 
     }
 
     ngOnInit() {
-        this.chatService.messages.subscribe(msg => {
-            this.messages.push(msg);
+        this.chatService.stockQuote.subscribe(msg => {
+            this.stockQuote = msg;
+            //this.messages.push(msg);
         });
     }
 }
