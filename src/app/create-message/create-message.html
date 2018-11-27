@@ -1,0 +1,7 @@
+<h2>New message:</h2>
+<div class="input-group col-xs-8">
+    <input [(ngModel)]="message.message" name="msg" type="text" class="form-control" placeholder="message...">
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" (click)="sendMsg()">send</button>
+    </span>
+</div>
