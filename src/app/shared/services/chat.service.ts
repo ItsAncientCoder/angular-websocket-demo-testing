@@ -22,7 +22,7 @@ export class ChatService {
         // 1. subscribe to chatbox
         this.messages = <Subject<GraphQLMessage>>this.wsService
             .connect(STOCK_URL)
-            .map((response: MessageEvent): GraphQLMessage => {
+            .map((response: any): GraphQLMessage => {
                 let data = JSON.parse(response.data);
 
                 console.log(data.stockQuotes.stockPrice);
