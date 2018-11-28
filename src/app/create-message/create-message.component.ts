@@ -30,6 +30,6 @@ export class CreateMessage {
     }
 
     sendMsg() {
-        this.chatService.stockQuote.next(this.graphqlMsg);
+        this.chatService.stockQuotes.next(this.graphqlMsg);
     }
 }

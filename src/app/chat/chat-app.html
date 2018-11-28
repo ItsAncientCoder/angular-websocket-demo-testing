@@ -1,8 +1,27 @@
 <div>
     <h2>Recieved messages:</h2>
-    <div>
-        <p>{{stockQuote.stockCode}}</p>
-        <p>{{stockQuote.stockPrice}}</p>
-        <p>{{stockQuote.dateTime}}</p>
+    <div class="row">
+        <div *ngFor="let quote of stockQuotes">
+            <div *ngIf="quote.stockCode==='GOOGL'">
+                <p>{{quote.stockCode}}</p>
+                <p>{{quote.stockPrice}}</p>
+            </div> &nbsp;
+            <div *ngIf="quote.stockCode==='IBM'">
+                <p>{{quote.stockCode}}</p>
+                <p>{{quote.stockPrice}}</p>
+            </div> &nbsp;
+            <div *ngIf="quote.stockCode==='AMZN'">
+                <p>{{quote.stockCode}}</p>
+                <p>{{quote.stockPrice}}</p>
+            </div> &nbsp;
+            <div *ngIf="quote.stockCode==='MSFT'">
+                <p>{{quote.stockCode}}</p>
+                <p>{{quote.stockPrice}}</p>
+            </div> &nbsp;
+            <div *ngIf="quote.stockCode==='TEAM'">
+                <p>{{quote.stockCode}}</p>
+                <p>{{quote.stockPrice}}</p>
+            </div>
+        </div>
     </div>
 </div>

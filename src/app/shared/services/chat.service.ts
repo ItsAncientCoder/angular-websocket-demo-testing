@@ -14,23 +14,21 @@ export interface GraphQLMessage {
 
 @Injectable()
 export class ChatService {
-    public stockQuote: Subject<any> = new Subject<any>();
+    public stockQuotes: Subject<any> = new Subject<any>();
 
     constructor(private wsService: WebSocketService) {
 
         // 1. subscribe to chatbox
-        this.stockQuote = <Subject<StockQuote>>this.wsService
+        this.stockQuotes = <Subject<StockQuote>>this.wsService
             .connect(STOCK_URL)
             .map((response: any): StockQuote => {
                 let data = JSON.parse(response.data);
 
-                console.log(data);
-
                 return {
-                    dateTime: data.dateTime,
-                    stockCode: data.stockCode,
-                    stockPrice: data.stockPrice,
-                    stockPriceChange: data.stockPriceChange
+                    dateTime: data.stockQuotes.dateTime,
+                    stockCode: data.stockQuotes.stockCode,
+                    stockPrice: data.stockQuotes.stockPrice,
+                    stockPriceChange: data.stockQuotes.stockPriceChange
                 }
             });
 

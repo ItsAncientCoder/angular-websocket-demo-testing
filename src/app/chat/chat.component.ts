@@ -6,23 +6,22 @@ import { ChatService, StockQuote } from '../shared/services/chat.service';
     templateUrl: './chat-app.html'
 })
 export class ChatComponent implements OnInit {
-    messages: any[] = [];
 
-    stockQuote: StockQuote = {
-        dateTime: '',
-        stockCode: '',
-        stockPrice: 0,
-        stockPriceChange: 0
-    }
+    stockQuotes: Array<StockQuote> = [];
 
     constructor(private chatService: ChatService) {
 
     }
 
     ngOnInit() {
-        this.chatService.stockQuote.subscribe(msg => {
-            this.stockQuote = msg;
-            //this.messages.push(msg);
+        this.chatService.stockQuotes.subscribe(quote => {
+
+            if (this.stockQuotes) {
+                if (this.stockQuotes.length == 5) {
+                    this.stockQuotes.shift();
+                }
+                this.stockQuotes.push(quote)
+            }
         });
     }
 }
